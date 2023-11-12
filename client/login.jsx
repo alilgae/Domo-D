@@ -25,13 +25,14 @@ const handleSignup = (e) => {
     const username = e.target.querySelector('#user').value;
     const pass = e.target.querySelector('#pass').value;
     const pass2 = e.target.querySelector('#pass2').value;
+    const premium = e.target.querySelector('#premium').checked;
 
     if(!username || !pass || !pass2) {
         helper.handleError('All fields required');
         return false;
     }
 
-    helper.sendPost(e.target.action, {username, pass, pass2});
+    helper.sendPost(e.target.action, {username, pass, pass2, premium});
     return false;
 };
 
@@ -68,6 +69,8 @@ const SignupWindow = (props) => {
             <input id='pass' type='password' name='pass' placeholder='password' />
             <label htmlFor='pass'>Re-enter Password: </label>
             <input id='pass2' type='password' name='pass2' placeholder='re-enter password' />
+            <label htmlFor='premium'>Premium Account</label>
+            <input id='premium' type='checkbox' name='premium' value='yes' />
             <input className='formSubmit' type='submit' value='Sign up' />
         </form>
     );
